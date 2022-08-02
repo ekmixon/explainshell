@@ -72,8 +72,7 @@ class manager(object):
         self._classify(ctx, frunner)
         self._extract(ctx, frunner)
 
-        m = self._write(ctx, frunner)
-        return m
+        return self._write(ctx, frunner)
 
     def edit(self, m, paragraphs=None):
         ctx = self.ctx(m)
@@ -138,7 +137,7 @@ class manager(object):
             else:
                 manpages[m] = _id
 
-        mappings = set([x[0] for x in self.store.mappings()])
+        mappings = {x[0] for x in self.store.mappings()}
         mappingstoadd = []
         multicommands = {}
 
